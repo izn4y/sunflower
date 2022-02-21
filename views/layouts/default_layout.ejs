@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/reset.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/bootstrap-4.5.2-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.11.1/baguetteBox.css">
+
+
+    <title></title>
+    <link rel="apple-touch-icon" sizes="57x57" href="/icon/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/icon/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/icon/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/icon/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/icon/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/icon/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/icon/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/icon/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/icon/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/icon/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/icon/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/icon/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/icon/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/icon/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/icon/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light container">
+        <a class="navbar-brand title" href="/"><img id="icon" src="/icon/sunflower.png"></a>
+        <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav mx-auto">
+                <a class="nav-item nav-link" href="/">Accueil<span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link" href="/agence">L'agence</a>
+                <a class="nav-item nav-link " href="/services">Services</a>
+                <a class="nav-item nav-link" href="/contact">Contact</a>
+            </div>
+            <div class="social-network">
+                <a href="https://www.instagram.com/" target="_blank"><img class="mr-2" id="social"
+                        src="/icon/instagram.svg"></a>
+                <a href="https://www.facebook.com/" target="_blank"><img class="mr-2"
+                        id="social" src="/icon/facebook.svg"></a>
+                <a href="https://www.linkedin.com/" target="_blank"><img class="mr-2" id="social"
+                        src="/icon/linkedin.svg"></a>
+            </div>
+        </div>
+    </nav>
+
+    <%- body %>
+
+    <footer id="footer">
+        <div class="container">
+            <div class="row"> 
+                <div class="col-md-4 offset-md-4 Tcolor">
+                    <p style="font-size: 12px; text-align: center;">
+                        <a class="Tcolor" href="/legal">Mention légales</a>
+                        <br>Nostrum ipsa laudantium distinction &copy;
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 offset-md-4">
+                    <div class="social-network">
+                        <a href="https://www.instagram.com/" target="_blank"><img class="mr-2"
+                                id="social" src="/icon/instagram.svg"></a>
+                        <a href="https://www.facebook.com/" target="_blank"><img
+                                class="mr-2" id="social" src="/icon/facebook.svg"></a>
+                        <a href="https://www.linkedin.com/" target="_blank"><img class="mr-2"
+                                id="social" src="/icon/linkedin.svg"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script>
+
+        document.getElementById('contact-form').addEventListener('submit', e => {
+            e.preventDefault();
+            const prst = document.querySelector('#prst').value;
+            const name = document.querySelector('#name').value;
+            const email = document.querySelector('#email').value;
+            const optionyes = document.querySelector('#optionyes').value;
+            const message = document.querySelector('#message').value;
+            const captcha = document.querySelector('#g-recaptcha-response').value;
+
+            fetch('/send', {
+                method: 'POST',
+                headers: { 'Content-type': 'application/json' },
+                body: JSON.stringify({ name: name, email: email, prst: prst, message: message, captcha: captcha })
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    // alert(data.msg);
+                    document.getElementById('ms-err').innerHTML = data.msg;
+                    document.getElementById('ms-err').style.display = "block"
+                    if (data.success) {
+                        document.getElementById('ms-err').innerHTML = ""
+                        document.getElementById('ms-err').style.display = "none"
+                        document.getElementById("content-form").style.display = "none";
+                        document.getElementById("testdevon").style.display = "block";
+
+
+                        setTimeout(function () {
+                            $('.spinner').addClass('end');
+                        }, 3500);
+
+                    }
+                    //return location.reload();
+                });
+
+        })
+
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script> 
+     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.11.1/baguetteBox.min.js"></script>
+    <script src="/javascripts/top.js"></script>
+    <script src="/javascripts/limit_line.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="/javascripts/select.js" type="text/javascript"></script>
+    <script src="/javascripts/authorization.js" type="text/javascript"></script>
+
+    <script>
+        
+    </script>
+    <script>
+        AOS.init();
+        baguetteBox.run('.gallery');
+    </script>
+</body>
+
+</html>

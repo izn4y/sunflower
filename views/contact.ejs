@@ -1,0 +1,179 @@
+<header>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="details-text Tcolor">
+                    <h1>illum nam <span class="linecolor">doloribus!?</span></h1>
+                    <h2>At distinctio</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto, animi ex. At distinctio nisi vel, consectetur est, alias ratione impedit rerum itaque repellat asperiores illum nam earum voluptate doloribus dolores!
+                    </p>
+
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="details text-center pt-4 pb-5">
+                    <img class="img-fluid text-center" style="height: 350px;" src="/images/undraw_contract_uy56.svg">
+                </div>
+            </div>
+        </div>
+        <%-include('./partials/scroll-top.ejs')%>
+    </div>
+</header>
+<main>
+
+    <div class="container">
+        <div class="row">
+
+            <!-- A supprimer  -->
+            <!-- <% if (loader) {%>
+                <div id="testdevon" class="col-lg-6  col-md-6">
+                    <div class="mr-auto page_spinner">
+                        <div class="spinner">
+                            <div class="bounce2"></div>
+                            <div class="bounce1"></div>
+                            <div class="bounce3"></div>
+                            <div class="tick"></div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <% } %>  
+                 -->
+            <p id="aled3"></p>
+
+
+
+
+            <div role="form" id="content-form" class="col-md-6 mb-0 md-0 mb-5 mt-1">
+
+                <!-- <div class="alert">
+                    <span class="fas fa-exclamation-circle"></span>
+                    <span class="msg">Warning: This is a warning alert!</span>
+                    <div class="close-btn">
+                        <span class="fas fa-times">x</span>
+                    </div>
+                </div> -->
+
+                <div id="contact-form" name="contact-form">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="md-form mb-3">
+                                <input type="text" id="name" name="name" class="form-control" placeholder="Nom"
+                                    required>
+                            </div>
+
+                        </div>
+                        <div class="col-md-6">
+                            <div class="md-form mb-3">
+                                <input type="email" id="email" name="email" class="form-control" placeholder="Email"
+                                    required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="md-form mb-3">
+                                <select id="service" name="service" class="custom-select presta_list">
+                                    <% services.forEach(item=>{ %>
+                                        <option>
+                                            <%= item%>
+                                        </option>
+                                        <% }) %>
+                                </select>
+                            </div>
+                            <input style="visibility:hidden" type="text" id="optionyes" name="subject"
+                                class="form-control mt-3" placeholder="Sujet">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="md-form mb-5">
+                                <textarea type="text" id="message" name="message" rows="2"
+                                    class="form-control md-textarea" placeholder="Parlez-nous de votre projet"
+                                    required></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center text-md-left mb-5">
+                        <div class="personalrpg">
+                            <input class="tgl tgl-flat" id="cb4" type="checkbox" onclick="authcont()" />
+                            <label class="tgl-btn" for="cb4"></label>
+                        </div>
+                        <p style="font-size: 15px;" class="text-center Tcolor">J'accepte le traitement de mes données
+                            personnelles
+                            par Nostrum ipsa
+                            (réglementation européenne
+                            relative au
+                            traitement des données).
+                            <img style="height: 20px; cursor: help;" data-toggle="modal" data-target="#rgpdinfo"
+                                class="ml-1" src="/icon/information.svg">
+                        </p>
+                        <div class="g-recaptcha" data-sitekey="6LevdNkZAAAAAKv5765Ig2uKyjla7Hh4DWzDrNhC"></div>
+                        <button class="btn btn-warning send-button mt-3" id="look" value="SEND">
+                            <div class="button">
+                                <img style="width: 15px;" src="/icon/send.svg"><span class="send-text">Envoyer</span>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+
+
+
+
+                <div class="modal fade" id="rgpdinfo" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+
+                            <div class="modal-body Tcolor">
+                                <article>Les champs marqués d'une astérisque (*) sont obligatoires.
+                                    Note : la nouvelle règlementation relative au traitement des données
+                                    personnelles (RGPD
+                                    25 mai 2018) nous
+                                    impose d'obtenir votre consentement explicite, y compris sur nos formulaires de
+                                    contact.</article>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="status"></div>
+            </div>
+
+            <div id="info-contact" class="col-md-3 ml-auto text-center mb-5">
+
+                <ul class="list-unstyled Tcolor">
+                    <li>
+                        <p><img style="height: 20px;" src="/icon/pin.svg">&nbsp;Paris | 22 rue
+                            saint-augustin
+                        </p>
+                    </li>
+
+                    <li>
+                        <img style="height: 20px;" class="mb-3" src="/icon/phone.svg">&nbsp;
+                        &nbsp;06.23.56.89.93
+
+                    </li>
+                    <hr />
+                    <!-- <li id="lst-social">
+                     <button class="loginBtn loginBtn--facebook">
+                        Instagram
+                     </button>
+                  </li> -->
+
+                    <!-- <li id="lst-social">
+                     <button class="loginBtn loginBtn--facebook">
+                        Facebook
+                     </button>
+                  </li> -->
+                    <!-- <li id="lst-social">
+                     <button class="loginBtn loginBtn--facebook">
+                        Linkedin &nbsp;
+                     </button>
+                  </li> -->
+
+                </ul>
+            </div>
+
+        </div>
+</main>
