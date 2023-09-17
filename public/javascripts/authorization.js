@@ -40,7 +40,6 @@ sendBtn.addEventListener("click", async () => {
         $(".alert").removeClass("hide");
         $(".alert").addClass("showAlert");
         setTimeout(function () {
-      
           // $('.alert').removeClass("show");
           // $('.alert').addClass("hide");
         }, 5000);
@@ -94,7 +93,7 @@ sendBtn.addEventListener("click", async () => {
 // const buildAlertMsg = (pMsg) => {
 //   const div_alert = document.createElement("div");
 //   div_alert.setAttribute("class", "alert");
-//   div_alert.innerHTML = ` 
+//   div_alert.innerHTML = `
 //   <span class="fas fa-exclamation-circle"></span>
 //   <span class="msg">${pMsg}</span>
 //   <div class="close-btn">
@@ -103,5 +102,3 @@ sendBtn.addEventListener("click", async () => {
 //   `;
 //   div_content_form.appendChild(div_alert);
 // };
-
-

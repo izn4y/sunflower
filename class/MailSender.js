@@ -21,7 +21,7 @@ const sendVerificationMail = async (pName, pEmail, pService, pMessage) => {
     from: MAIL_SENDER,
     to: "dnep@outlook.fr",
     subject: pService,
-    html: pName +" "+ pEmail +" "+ pMessage +" "
+    html: pName + " " + pEmail + " " + pMessage + " ",
   });
 
   return info;
