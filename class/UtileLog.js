@@ -54,16 +54,17 @@ const logWritingError = (pError, pIsFullError, pNameFunction) => {
   let hour = today.getHours();
   let minutes = today.getMinutes();
   let seconds = today.getSeconds();
-  let time = hour +":"+minutes+":"+seconds
+  let time = hour + ":" + minutes + ":" + seconds;
   let dd = String(today.getDate()).padStart(2, "0");
   let mm = String(today.getMonth() + 1).padStart(2, "0");
   let yyyy = today.getFullYear();
 
-  
   today = `${dd}/${mm}/${yyyy}`;
 
   logger.write("\n");
-  logger.write(`=============================[${today} ${time}]============================`);
+  logger.write(
+    `=============================[${today} ${time}]============================`
+  );
   logger.write("\n");
   logger.write("\n");
   logger.write(`${info_Name}[${pNameFunction}]`);
@@ -71,7 +72,9 @@ const logWritingError = (pError, pIsFullError, pNameFunction) => {
   logger.write("\n");
   logger.write(pError.toString());
   logger.write("\n");
-  logger.write("===================================================================");
+  logger.write(
+    "==================================================================="
+  );
   logger.write("\n");
   logger.end();
 };
